@@ -1,36 +1,43 @@
 const addBook = document.querySelector(".add-book");
 const dialog = document.querySelector(".popup");
 const outputBox = document.querySelector("output");
-const input = document.querySelector("#title");
+const one= document.querySelector("#title").value;
+const two = document.querySelector("#author").value;
 const confirmBtn = document.querySelector("#confirmBtn");
 
-// "Show the dialog" button opens the <dialog> modally
 addBook.addEventListener("click", () => {
   dialog.showModal();
 });
 
-// "Favorite animal" input sets the value of the submit button
-input.addEventListener("change", (e) => {
-  confirmBtn.value = input.value;
-});
+const myLibrary = [];
 
-//  "Cancel" button closes the dialog without submitting because of [formmethod="dialog"], triggering a close event.
-dialog.addEventListener("close", (e) => {
-    outputBox.value=confirmBtn.value; // Have to check for "default" rather than empty string
-});
+function Book(title, author) {
+    this.title = title;
+    this.author=author;
 
-// Prevent the "confirm" button from the default behavior of submitting the form, and close the dialog with the `close()` method, which triggers the "close" event.
-confirmBtn.addEventListener("click", (event) => {
-  event.preventDefault(); 
-  dialog.close();
-});
+}
+Book.prototype.sayName=function(){
+    const {title, author} = this;
+    myLibrary.push(this.title, this.author)
+}
 
-// const myLibrary = [];
+const player1 = new Book("x", "y");
+player1.sayName();
+const player2 = new Book("o", "a");
+player2.sayName();
 
-// function Book() {
-//   // the constructor...
-// }
 
-// function addBookToLibrary() {
-//   // do stuff here
-// }
+// one.addEventListener("change", (e) => {
+//   one = one;
+// });
+
+// dialog.addEventListener("close", (e) => {
+//     document.querySelector(".t").textContent=myLibrary[0]; // Have to check for "default" rather than empty string
+//     document.querySelector(".a").textContent=myLibrary[1]; // Have to check for "default" rather than empty string
+
+// });
+
+// confirmBtn.addEventListener("click", (event) => {
+//   event.preventDefault(); 
+//   dialog.close();
+// });

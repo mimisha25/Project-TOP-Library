@@ -36,6 +36,7 @@ section {
 .info {
     background-color: bisque;
     width: 350px;
+    height: 300px;
 }
 
 footer {
@@ -94,11 +95,13 @@ input {
     border-radius: 10px;
 }
 
-
+.t, .a{
+    color: black;
+}
 
 output{
     border: 1px black solid;
-    width:100px;
-    height: 100px;
+    width:300px;
+    height: 400px;
     color: blue;
 }
