@@ -1,36 +1,76 @@
-const addBook = document.querySelector(".add-book");
+const book_container = document.querySelector(".library-container");
 const dialog = document.querySelector(".popup");
-const outputBox = document.querySelector("output");
-const input = document.querySelector("#title");
-const confirmBtn = document.querySelector("#confirmBtn");
+const addBook = document.querySelector("h2");
+const btn = document.querySelector(".button");
+const show_btn = document.querySelector(".show");
+const isRead_state = document.querySelector(".book-isRead");
+const myLibrary = [];
 
-// "Show the dialog" button opens the <dialog> modally
 addBook.addEventListener("click", () => {
-  dialog.showModal();
+    dialog.showModal();
+  });
+  
+function Book(title, author, pages, isRead) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.isRead = isRead;
+}
+
+btn.addEventListener("click", () => {
+
+  const title = document.querySelector("#title").value;
+  const author = document.querySelector("#author").value;
+  const pages = document.querySelector("#pages").value;
+  const isRead = document.querySelector("#isRead").checked
+    ? "has been read"
+    : "not read yet";
+
+
+  const book = new Book(title, author, pages, isRead);
+  myLibrary.push(book);
+  
+  const new_Book = document.createElement("div");
+  new_Book.classList.add("book");
+  const new_title = document.createElement("div");
+  new_title.classList.add("book-title");
+  const new_author = document.createElement("div");
+  new_author.classList.add("book-author");
+  const new_pages = document.createElement("div");
+  new_pages.classList.add("book-pages");
+  const new_isRead = document.createElement("div");
+  new_isRead.classList.add("book-isRead");
+  const button = document.createElement("button");
+  button.classList.add("delete");
+
+  new_title.textContent = `Title : ${book.title}`;
+  new_author.textContent = `Author :${book.author}`;
+  new_pages.textContent = `Number of pages :${book.pages}`;
+  new_isRead.textContent = `${book.isRead}`;
+    button.textContent='Delete'
+
+
+  book_container.appendChild(new_Book);
+  new_Book.appendChild(new_title);
+  new_Book.appendChild(new_author);
+  new_Book.appendChild(new_pages);
+  new_Book.appendChild(new_isRead);
+  new_Book.appendChild(button);
+
+
+document.querySelector(".delete").addEventListener("click", function(){
+    book_container.removeChild(new_Book);
+})
+dialog.close();
+reset();
+ 
 });
 
-// "Favorite animal" input sets the value of the submit button
-input.addEventListener("change", (e) => {
-  confirmBtn.value = input.value;
-});
+function reset(){
+     document.querySelector("#title").value = '';
+        document.querySelector("#author").value='';
+        document.querySelector("#pages").value = '';
+         document.querySelector("#isRead").checked=false;
+}
 
-//  "Cancel" button closes the dialog without submitting because of [formmethod="dialog"], triggering a close event.
-dialog.addEventListener("close", (e) => {
-    outputBox.value=confirmBtn.value; // Have to check for "default" rather than empty string
-});
 
-// Prevent the "confirm" button from the default behavior of submitting the form, and close the dialog with the `close()` method, which triggers the "close" event.
-confirmBtn.addEventListener("click", (event) => {
-  event.preventDefault(); 
-  dialog.close();
-});
-
-// const myLibrary = [];
-
-// function Book() {
-//   // the constructor...
-// }
-
-// function addBookToLibrary() {
-//   // do stuff here
-// }
