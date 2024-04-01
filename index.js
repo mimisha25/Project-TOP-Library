@@ -6,7 +6,6 @@ const show_btn = document.querySelector(".show");
 const isRead_state = document.querySelector(".book-isRead");
 const myLibrary = [];
 
-
 addBook.addEventListener("click", () => {
     dialog.showModal();
   });
@@ -17,6 +16,7 @@ function Book(title, author, pages, isRead) {
   this.pages = pages;
   this.isRead = isRead;
 }
+
 
 function render(){
     book_container.innerHTML="";
@@ -32,6 +32,14 @@ function render(){
         new_pages.classList.add("book-pages");
         const new_isRead = document.createElement("div");
         new_isRead.classList.add("book-isRead");
+
+        new_isRead.addEventListener("click", () => {
+            if (new_isRead.textContent == "Unread") new_isRead.textContent = "Read";
+            else new_isRead.textContent = "Unread"; 
+        });
+        new_isRead.textContent = book.new_isRead;
+    
+
         const button = document.createElement("button");
         button.classList.add("delete");
         button.setAttribute("onclick", `removeBook(${i})`)
@@ -47,14 +55,17 @@ function render(){
         new_Book.appendChild(new_pages);
         new_Book.appendChild(new_isRead);
         new_Book.appendChild(button);     
+        
 
     }
-  
 }
+
+
 function removeBook(i){
     myLibrary.splice(i, 1);
     render();
 }
+
 
 
 function addBookToLibrary() {
@@ -62,12 +73,14 @@ function addBookToLibrary() {
     const author = document.querySelector("#author").value;
     const pages = document.querySelector("#pages").value;
     const isRead = document.querySelector("#isRead").checked
-      ? "has been read"
-      : "not read yet";
+      ? "Read"
+      : "Unread";
     const abook = new Book(title, author, pages, isRead);
     myLibrary.push(abook);
     render();
   }
+
+  
 
 btn.addEventListener("click", () => {
     addBookToLibrary();
@@ -82,4 +95,3 @@ function reset(){
         document.querySelector("#pages").value = '';
          document.querySelector("#isRead").checked=false;
 }
-
