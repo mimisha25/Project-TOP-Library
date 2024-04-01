@@ -6,6 +6,7 @@ const show_btn = document.querySelector(".show");
 const isRead_state = document.querySelector(".book-isRead");
 const myLibrary = [];
 
+
 addBook.addEventListener("click", () => {
     dialog.showModal();
   });
@@ -73,9 +74,7 @@ btn.addEventListener("click", () => {
     dialog.close();
     reset();
 });
-Book.prototype.toggleRead = function(){
-    this.read = !this.read;
-}
+
 
 function reset(){
      document.querySelector("#title").value = '';
@@ -83,3 +82,4 @@ function reset(){
         document.querySelector("#pages").value = '';
          document.querySelector("#isRead").checked=false;
 }
+
