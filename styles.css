@@ -97,24 +97,6 @@ label{
 }
 input:valid ~ label{
     top: -2px;
-
-}
-
-input:focus ~ label{
-    top: -2px;
-    color: black; 
-}
-label{
-    color: grey;
-    font-size: 14px;
-    position: absolute;
-    pointer-events: none;
-    left:10px;
-    top: 8px;
-    transition: 300ms ease all; 
-}
-input:valid ~ label{
-    top: -2px;
 }
 
 .isRead {
