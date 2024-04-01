@@ -64,6 +64,7 @@ form {
 
 .input-group{
     position: relative;
+
 }
 .input-group input{
     display: block;
@@ -96,8 +97,25 @@ label{
 }
 input:valid ~ label{
     top: -2px;
+
 }
 
+input:focus ~ label{
+    top: -2px;
+    color: black; 
+}
+label{
+    color: grey;
+    font-size: 14px;
+    position: absolute;
+    pointer-events: none;
+    left:10px;
+    top: 8px;
+    transition: 300ms ease all; 
+}
+input:valid ~ label{
+    top: -2px;
+}
 
 .isRead {
   display: flex;
@@ -107,6 +125,7 @@ input:valid ~ label{
   height: 40px;
   gap: 10px;
 }
+
 
 .button {
   border-radius: 20px;
@@ -121,6 +140,7 @@ input:valid ~ label{
     cursor: pointer;
   }
 }
+
 
 .show {
   margin-top: 5px;
@@ -166,4 +186,6 @@ input:valid ~ label{
 }
 .book-isRead:hover {
     cursor: pointer;
+
 }
+
