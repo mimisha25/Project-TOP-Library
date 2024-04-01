@@ -34,12 +34,7 @@ main{
     background-color: white;
     padding: 30px ;
 }
-.sidebar{
-    grid-area: 3/4/10/5;
-    padding: 20px;
-    text-align: center;
-    background-color: white;
-}
+
 footer{
     grid-area: 10/1/11/5;
     padding: 20px 0px;
