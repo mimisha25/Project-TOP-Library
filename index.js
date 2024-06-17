@@ -1,9 +1,8 @@
-const book_container = document.querySelector(".library-container");
-const dialog = document.querySelector(".popup");
-const addBook = document.querySelector("h2");
-const btn = document.querySelector(".button");
-const show_btn = document.querySelector(".show");
-const isRead_state = document.querySelector(".book-isRead");
+const dialog = document.querySelector("dialog");
+const showButton = document.querySelector(".addBookBtn");
+const closeButton = document.querySelector("dialog button");
+const booksContainer = document.querySelector("#books-container");
+
 const myLibrary = [];
 
 addBook.addEventListener("click", () => {
