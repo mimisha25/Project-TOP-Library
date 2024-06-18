@@ -5,7 +5,7 @@ const booksContainer = document.querySelector("#books-container");
 
 const myLibrary = [];
 
-addBook.addEventListener("click", () => {
+showButton.addEventListener("click", () => {
     dialog.showModal();
   });
   
