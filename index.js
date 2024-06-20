@@ -27,3 +27,11 @@ showButton.addEventListener("click", () => {
       this.read = !this.read;
     }
   }
+
+  function addBookToLibrary() {
+
+    const newBook = new Book(author, title, pages, read);
+  myLibrary.push(newBook);
+  booksContainer.innerHTML = "";
+
+  }
