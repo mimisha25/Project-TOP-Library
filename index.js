@@ -34,4 +34,49 @@ showButton.addEventListener("click", () => {
   myLibrary.push(newBook);
   booksContainer.innerHTML = "";
 
+  myLibrary.forEach((newBook) => {
+    const book = document.createElement("div");
+    book.classList.add("book");
+    booksContainer.appendChild(book);
+    const author = document.createElement("p");
+    author.textContent ="Author: " + newBook.author;
+    book.appendChild(author);
+
+    const title = document.createElement("p");
+    title.textContent ="Title: " +  newBook.title;
+    book.appendChild(title);
+
+    const pages = document.createElement("p");
+    pages.textContent ="Pages: " +  newBook.pages;
+    book.appendChild(pages);
+
+    const rea = document.createElement("button"); 
+    
+
+    const deleteCard = document.createElement("button"); 
+    deleteCard.setAttribute("onclick", "deleteBook(this)");
+    deleteCard.classList.add("delete");
+    deleteCard.innerText="Delete";
+    
+    const updateReadButton = () => {
+      if (newBook.read === true) {
+        rea.classList.add("isRead");
+        rea.classList.remove("notRead");
+        rea.innerHTML = `Read`;
+      } else if(newBook.read === false) {
+        rea.classList.add("notRead");
+        rea.classList.remove("isRead");
+        rea.innerHTML = `Not Read`;
+      }
+    };
+    updateReadButton();
+    rea.addEventListener("click", () => {
+      newBook.toggle();
+      updateReadButton();
+    });
+
+    book.appendChild(rea);
+    book.appendChild(deleteCard);
+    newBook.reset();
+});
   }
