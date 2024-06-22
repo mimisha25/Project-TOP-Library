@@ -80,3 +80,9 @@ showButton.addEventListener("click", () => {
     newBook.reset();
 });
   }
+
+  closeButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    addBookToLibrary();
+    dialog.close();
+  });
