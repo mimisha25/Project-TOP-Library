@@ -86,3 +86,11 @@ showButton.addEventListener("click", () => {
     addBookToLibrary();
     dialog.close();
   });
+
+  const deleteBook = (buttonEl) => {
+    const arrBook = myLibrary.findIndex((book) => {
+      book.author === buttonEl.parentElement.value;
+    });
+    buttonEl.parentElement.remove();
+    myLibrary.splice(arrBook, 1);
+  };
